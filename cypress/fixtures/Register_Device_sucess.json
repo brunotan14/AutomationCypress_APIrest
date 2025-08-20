@@ -1,0 +1,9 @@
+{
+    "name": "Celular de Bruno Nathan",
+    "data": {
+            "year": 2022,
+            "color": "Red",
+             "price": 1990,
+            "owner": "Bruno Nathan"
+     }
+}
