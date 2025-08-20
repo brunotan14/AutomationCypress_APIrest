@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-08-20T21:46:41.964Z",
+    "end": "2025-08-20T21:46:43.905Z",
+    "duration": 1941,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "edf5fce4-29a4-462a-8ecc-1375028ae888",
+      "title": "",
+      "fullFile": "cypress\\e2e\\get.api.cy.js",
+      "file": "cypress\\e2e\\get.api.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "fdf6521a-0a07-40cb-b6f5-272c17f3f427",
+          "title": "Buscar dispositivos",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Buscar um dispositivo especifico",
+              "fullTitle": "Buscar dispositivos Buscar um dispositivo especifico",
+              "timedOut": null,
+              "duration": 1302,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const device_id = '8';\ncy.buscarDeviceespecifico(device_id).as('ResultGet');\ncy.get('@ResultGet').then(response => {\n  expect(response.status).equal(200);\n  expect(response.body.id).equal(device_id);\n  expect(response.body.name).equal(\"Apple Watch Series 8\");\n  expect(response.body).not.empty; //verificar se o body não é vazio, o empty só serve para strings\n});",
+              "err": {},
+              "uuid": "1efdbe1e-f58e-4a3e-b908-e3a0363faaf9",
+              "parentUUID": "fdf6521a-0a07-40cb-b6f5-272c17f3f427",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Buscar um device inexistentte",
+              "fullTitle": "Buscar dispositivos Buscar um device inexistentte",
+              "timedOut": null,
+              "duration": 542,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const device_id = 'xct';\ncy.buscarDeviceespecifico(device_id).as('ResultGet');\ncy.get('@ResultGet').then(response => {\n  expect(response.status).equal(404);\n  expect(response.body.error).equal(`Oject with id=${device_id} was not found.`);\n});",
+              "err": {},
+              "uuid": "a3070367-fb92-49f3-882f-a941c533b7ad",
+              "parentUUID": "fdf6521a-0a07-40cb-b6f5-272c17f3f427",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "1efdbe1e-f58e-4a3e-b908-e3a0363faaf9",
+            "a3070367-fb92-49f3-882f-a941c533b7ad"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1844,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

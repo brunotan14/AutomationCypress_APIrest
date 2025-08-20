@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-08-20T21:46:50.461Z",
+    "end": "2025-08-20T21:46:51.963Z",
+    "duration": 1502,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "da9c91b5-4937-4c4e-b781-fdc027cc32e5",
+      "title": "",
+      "fullFile": "cypress\\e2e\\put.api.cy.js",
+      "file": "cypress\\e2e\\put.api.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e24f0cdc-5d2e-4125-96cf-b235a5f202fa",
+          "title": "Update",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Alterando um dispositivo",
+              "fullTitle": "Update Alterando um dispositivo",
+              "timedOut": null,
+              "duration": 1436,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.CadastrarDevice(cadastro).as(\"ResultPost\");\ncy.get(\"@ResultPost\").then(response => {\n  expect(response.status).equal(200);\n  expect(response.body.name).equal('Celular de Bruno Nathan');\n  expect(response.body.data.color).equal('Red');\n  const id = response.body.id;\n  // Fazendo alterações no dispositivo com o put\n  cy.UpdateDevice(id, update).as('ResultPut');\n  cy.get('@ResultPut').then(response_put => {\n    expect(response_put.status).equal(200);\n    expect(response_put.body.name).equal('Celular de Bruno Nathan 2 geração');\n    expect(response_put.body.data.color).equal('green');\n  });\n  // validando se a mudança foi feita com o get\n  cy.buscarDeviceespecifico(id).as('ResultGet');\n  cy.get('@ResultGet').then(response_get => {\n    expect(response_get.status).equal(200);\n    expect(response_get.body.name).equal('Celular de Bruno Nathan 2 geração');\n  });\n});",
+              "err": {},
+              "uuid": "35471309-bc03-4d3a-a057-3f401ac049f6",
+              "parentUUID": "e24f0cdc-5d2e-4125-96cf-b235a5f202fa",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "35471309-bc03-4d3a-a057-3f401ac049f6"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1436,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
