@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-08-20T21:34:56.597Z",
+    "end": "2025-08-20T21:34:58.581Z",
+    "duration": 1984,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "94f06ce9-7a02-4dbf-9d8b-c73b859d495d",
+      "title": "",
+      "fullFile": "cypress\\e2e\\delete.api.cy.js",
+      "file": "cypress\\e2e\\delete.api.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0d8743f6-c60f-4555-a352-e5efb8665204",
+          "title": "Delete",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deletar um dispositivo",
+              "fullTitle": "Delete Deletar um dispositivo",
+              "timedOut": null,
+              "duration": 1273,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.CadastrarDevice(body).as(\"ResultPost\");\ncy.get(\"@ResultPost\").then(response => {\n  expect(response.status).equal(200);\n  const id = response.body.id;\n  cy.DeleteDevice(id).as('ResultDelete');\n  cy.get('@ResultDelete').then(response_del => {\n    expect(response_del.status).to.equal(200);\n    expect(response_del.body.message).to.exist;\n  });\n});",
+              "err": {},
+              "uuid": "24c1cfd5-a880-41a3-be76-576f75f9b78f",
+              "parentUUID": "0d8743f6-c60f-4555-a352-e5efb8665204",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deletando um dispositivo não existente",
+              "fullTitle": "Delete Deletando um dispositivo não existente",
+              "timedOut": null,
+              "duration": 512,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const id_inexistente = 'bruno87878';\ncy.DeleteDevice(id_inexistente).as('ResultDelete');\ncy.get('@ResultDelete').then(response_del => {\n  expect(response_del.status).equal(404);\n  expect(response_del.body.error).equal(`Object with id = ${id_inexistente} doesn't exist.`);\n});",
+              "err": {},
+              "uuid": "8cf62a11-3c96-4b6d-b8b3-76826c582063",
+              "parentUUID": "0d8743f6-c60f-4555-a352-e5efb8665204",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "24c1cfd5-a880-41a3-be76-576f75f9b78f",
+            "8cf62a11-3c96-4b6d-b8b3-76826c582063"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1785,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

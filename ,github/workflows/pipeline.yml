@@ -1,0 +1,42 @@
+name: Tests runs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  cypress-run:
+    runs-on: windows-latest
+
+    steps:
+      # 1️ Clonar o repositório
+      - name: Checkout do projeto
+        uses: actions/checkout@v3
+
+      # 2️ Configurar Node 22 (evita erros de engine incompatível)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+        
+
+      # 3️ Instalar dependências
+      - name: Instalar dependências
+        run: npm ci
+
+      # 4️ Rodar Cypress com integração no Cypress Cloud
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          record: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+
+      # 5 relátorio com o mochawesome
+      - name: Cypress report
+        uses: actions/upload-artifact@v4
+        with:
+          name: mochawesome-report
+          path: cypress/reports/html
