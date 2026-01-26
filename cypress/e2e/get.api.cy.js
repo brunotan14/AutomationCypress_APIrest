@@ -1,8 +1,9 @@
 /// <reference types="cypress" />
 describe("Buscar dispositivos", () => {
+    let device_id
 
     it("Buscar um dispositivo especifico", () => {
-        const device_id = '8'
+        device_id = "8"
         cy.buscarDeviceespecifico(device_id).as('ResultGet')
 
         cy.get('@ResultGet').then((response)=>{
@@ -15,7 +16,8 @@ describe("Buscar dispositivos", () => {
      })
     
      it("Buscar um device inexistentte", () => {
-         const device_id = 'xct'
+         device_id = "bru"
+         
         cy.buscarDeviceespecifico(device_id).as('ResultGet')
 
         cy.get('@ResultGet').then((response)=>{

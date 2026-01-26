@@ -4,6 +4,7 @@
 // pois pode dá erro no futuro, 
 describe("Delete", () => {
     const body = require('../fixtures/Register_Device_sucess.json')
+    let id
 it("Deletar um dispositivo", () => {
     cy.CadastrarDevice(body).as("ResultPost")
 
@@ -11,7 +12,7 @@ it("Deletar um dispositivo", () => {
         expect(response.status).equal(200)
      
 
-    const id = response.body.id
+    id = response.body.id
 
     cy.DeleteDevice(id).as('ResultDelete')
 
